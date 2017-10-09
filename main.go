@@ -31,7 +31,7 @@ type marketSummary struct {
 }
 
 func (m marketSummary) String() string {
-	return fmt.Sprintf(`last{exchange="bittrex",market="%s"} %f`, m.MarketName, m.Last)
+	return fmt.Sprintf(`last{exchange="bittrex",market="%s"} %.8f`, m.MarketName, m.Last)
 }
 
 type marketSummaries struct {
@@ -77,5 +77,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handler)
-	http.ListenAndServe("127.0.0.1:8080", nil)
+	http.ListenAndServe(":8080", nil)
 }
